@@ -1,50 +1,133 @@
-# Secrets & env
+# =============================================================================
+# AgenticRLHF-RLAIF — repository ignore rules
+# Covers Python, Streamlit, Ollama/HF caches, Chroma, LoRA/DPO artifacts.
+# =============================================================================
+
+# ----- Secrets and local environment -----
 .env
 .env.*
 !.env.example
+.envrc
+*.pem
+*.key
+credentials.json
+secrets.json
 
-# Python
+# ----- Python packaging and bytecode -----
 __pycache__/
 *.py[cod]
 *$py.class
-*.egg-info/
-.eggs/
-dist/
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ----- Virtual environments -----
 .venv/
 venv/
-.envrc
+ENV/
+env/
+env.bak/
+venv.bak/
+.conda/
+conda-meta/
 
-# IDE / OS
+# ----- Test / type / lint caches -----
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.cache/
+nosetests.xml
+
+# ----- IDE / OS -----
 .idea/
 .vscode/
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# Local data & artifacts
+# ----- Streamlit -----
+.streamlit/secrets.toml
+
+# ----- Jupyter -----
+.ipynb_checkpoints/
+
+# ----- Local runtime data (regenerable; keep JSON corpora tracked) -----
 *.db
 *.sqlite
 *.sqlite3
-logs/
-exports/
-checkpoints/
-data/chroma/
 data/rlaif.db
 data/demo_rlaif.db
 data/demo_rlaif.db.bak
-*.pt
-*.bin
-*.safetensors
+data/chroma/
+!data/benchmark/
+!data/benchmark/**
+!data/safety/
+!data/safety/**
+
+# ----- Logs, exports, experiment dumps -----
+logs/
+exports/
 wandb/
 runs/
-.cache/
+mlruns/
+tmp/
+temp/
+*.log
 
-# Model caches (keep project small)
+# ----- Model weights, adapters, and binary checkpoints -----
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.gguf
+*.ggml
+*.ckpt
+*.h5
+
+# ----- Local model / Hugging Face / Ollama cache directories -----
 models/
 hf_cache/
+.cache/huggingface/
+**/transformers/cache/
 
-# Streamlit
-.streamlit/secrets.toml
+# ----- Packaging convenience zips (prefer regenerating from scripts) -----
+*.zip
 
-# Jupyter
-.ipynb_checkpoints/
+# ----- Misc tooling -----
+.pypirc
+tempCodeRunnerFile.py
+__marimo__/
+profile_default/
+ipython_config.py
