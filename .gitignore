@@ -1,0 +1,50 @@
+# Secrets & env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.envrc
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local data & artifacts
+*.db
+*.sqlite
+*.sqlite3
+logs/
+exports/
+checkpoints/
+data/chroma/
+data/rlaif.db
+data/demo_rlaif.db
+data/demo_rlaif.db.bak
+*.pt
+*.bin
+*.safetensors
+wandb/
+runs/
+.cache/
+
+# Model caches (keep project small)
+models/
+hf_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Jupyter
+.ipynb_checkpoints/
